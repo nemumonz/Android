@@ -9,38 +9,31 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="222dp"
+        android:layout_height="198dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="?attr/colorButtonNormal"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title"
-        app:srcCompat="@android:color/holo_blue_dark" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
     <TextView
         android:id="@+id/txt_title"
         android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="50dp"
         android:fontFamily="monospace"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="@string/str_title"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:textColor="@android:color/darker_gray"
         android:typeface="monospace"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/title" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -48,7 +41,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -73,27 +66,38 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button1_1"
+                    android:id="@+id/input_reset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button"
+                    android:text="@string/str_reset"
+                    android:typeface="monospace"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
-                    android:id="@+id/button1_2"
+                    android:id="@+id/input_minor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_minor"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button1_3"
+                    android:id="@+id/input_sharp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_sharp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_flat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_flat"
+                    android:typeface="monospace" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,41 +107,62 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button2_1"
+                    android:id="@+id/input_c"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button"
+                    android:text="@string/str_c"
+                    android:typeface="monospace"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
-                    android:id="@+id/button2_2"
+                    android:id="@+id/input_d"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_d"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button2_3"
+                    android:id="@+id/input_E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_e"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button2_4"
+                    android:id="@+id/input_F"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_f"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button2_5"
+                    android:id="@+id/input_G"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_g"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_a"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_b"
+                    android:typeface="monospace" />
             </LinearLayout>
 
             <LinearLayout
@@ -147,34 +172,159 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button3_1"
+                    android:id="@+id/input_7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button"
+                    android:text="@string/str_7"
+                    android:typeface="monospace"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
-                    android:id="@+id/button3_2"
+                    android:id="@+id/input_maj7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_maj7"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button3_3"
+                    android:id="@+id/input_6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_6"
+                    android:typeface="monospace" />
 
                 <Button
-                    android:id="@+id/button3_4"
+                    android:id="@+id/input_harfdim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/str_harfdim"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_dim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_dim"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_dim_maj7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="oM7"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_aug"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_aug"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_aug_maj7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_aug_maj7"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_7sus4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_7sus4"
+                    android:typeface="monospace" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/input_flat5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_flat5"
+                    android:typeface="monospace"
+                    tools:layout_editor_absoluteX="69dp"
+                    tools:layout_editor_absoluteY="342dp" />
+
+                <Button
+                    android:id="@+id/input_sharp5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_sharp5"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_9"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_flat9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_flat9"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_sharp9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_sharp9"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_11"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_sharp11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_sharp11"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_13"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/input_flat13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_flat13"
+                    android:typeface="monospace" />
             </LinearLayout>
 
         </LinearLayout>
