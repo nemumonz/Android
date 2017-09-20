@@ -18,18 +18,35 @@ class MainActivity : Activity() {
         // リスナー登録
         setListener()
 
-        imageView.setImageBitmap(createTextToBitmap(this, "テスト", Typeface.MONOSPACE))
+        // 保存データ読み込み
+        SaveDataAccessor.registerSharedPreferences(this)
+        val outputChord = SaveDataAccessor.readOutputChord()
+        Log.d(LOGTAG, "outputChord:" + outputChord)
+
+        setOutputChord(outputChord)
+    }
+
+    fun setOutputChord(str: String) {
+        imageView.setImageBitmap(createTextToBitmap(this, str, Typeface.MONOSPACE))
     }
 
     /** リスナー登録 */
     fun setListener() {
         input_reset.setOnClickListener {
             Log.d(LOGTAG, resources.getString(R.string.str_reset))
+            val str = ""
+            SaveDataAccessor.writeOutputChord(str)
+            setOutputChord(str)
+        }
+        input_minor.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_minor)) }
+        input_sharp.setOnClickListener {
+            Log.d(LOGTAG, resources.getString(R.string.str_sharp))
+            val str = SaveDataAccessor.readOutputChord() + resources.getString(R.string.str_sharp)
+            SaveDataAccessor.writeOutputChord(str)
+            setOutputChord(str)
             startAnime(imageView, 400)
         }
-        input_sharp.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_sharp)) }
         input_flat.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_flat)) }
-        input_minor.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_minor)) }
 
         input_c.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_c)) }
         input_d.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_d)) }

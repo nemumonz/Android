@@ -21,7 +21,11 @@ import android.widget.TextView
 /**
  * 文字列からBitmapを生成
  */
-fun createTextToBitmap(context: Context, str: String, typeface: Typeface): Bitmap {
+fun createTextToBitmap(context: Context, str: String, typeface: Typeface): Bitmap? {
+    if(str == "") {
+        return null
+    }
+
     val textView = TextView(context)
     textView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
