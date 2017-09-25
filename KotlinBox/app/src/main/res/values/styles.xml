@@ -7,8 +7,20 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="colorButtonNormal">#FAFAFA</item>
-        <item name="colorControlHighlight">#FFAB40</item>
+        <item name="colorButtonNormal">@color/btn_input</item>
+        <item name="colorControlHighlight">@color/colorInputButtonHighlight</item>
     </style>
+
+    <style name="AppTheme.Button" parent="android:Widget.Material.Button">
+        <!-- サイズと文字装飾の設定をしているだけなので本稿とは無関係 -->
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:soundEffectsEnabled">false</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+
 
 </resources>

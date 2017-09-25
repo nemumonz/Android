@@ -75,7 +75,8 @@ class MainActivity : Activity() {
 
 class EventBtn(val activity: MainActivity, val name: String) : View.OnClickListener {
     override fun onClick(v: View?) {
-        Log.d(LOGTAG, name);
+        v?.isSelected = v?.isSelected?.not() ?: false
+
         val str = SaveDataAccessor.readOutputChord() + name
         SaveDataAccessor.writeOutputChord(str)
         setOutputChord(str)
