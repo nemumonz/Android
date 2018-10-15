@@ -6,13 +6,16 @@ import android.graphics.*
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
 val LOGTAG = "MainActivity"
 
 class MainActivity : Activity() {
+    var mOutputStrList = mutableListOf<String>()
+
     /** 生成処理 */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,80 +24,90 @@ class MainActivity : Activity() {
         // リスナー登録
         setListener()
 
-        imageView.setImageBitmap(createTextToBitmap("テスト"))
+        setOutputChord(mOutputStrList.toString())
+
+        // 保存データアクセサ初期化
+        SaveDataAccessor.registerSharedPreferences(this)
+    }
+
+    fun setOutputChord(str: String) {
+        imageView.setImageBitmap(createTextToBitmap(this, str, 16f, Typeface.MONOSPACE))
     }
 
     /** リスナー登録 */
     fun setListener() {
         input_reset.setOnClickListener {
-            Log.d(LOGTAG, resources.getString(R.string.str_reset))
-            val anim = ObjectAnimator.ofFloat(imageView, "rotationY", 0f, 360f)
-            anim.repeatCount = 1
-            anim.duration = 100
-            anim.start()
+            mOutputStrList.clear()
+            setOutputChord(mOutputStrList.toString())
+            lay_output.removeAllViews()
         }
-        input_sharp.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_sharp)) }
-        input_flat.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_flat)) }
-        input_minor.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_minor)) }
+        input_minor.setOnClickListener(EventBtn(this, "m"))
+        input_sharp.setOnClickListener(EventBtn(this, resources.getString(R.string.str_sharp)))
+        input_flat.setOnClickListener(EventBtn(this, resources.getString(R.string.str_flat)))
 
-        input_c.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_c)) }
-        input_d.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_d)) }
-        input_e.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_e)) }
-        input_f.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_f)) }
-        input_g.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_g)) }
-        input_a.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_a)) }
-        input_b.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_b)) }
+        input_c.setOnClickListener(EventBtn(this, resources.getString(R.string.str_c)))
+        input_d.setOnClickListener(EventBtn(this, resources.getString(R.string.str_d)))
+        input_e.setOnClickListener(EventBtn(this, resources.getString(R.string.str_e)))
+        input_f.setOnClickListener(EventBtn(this, resources.getString(R.string.str_f)))
+        input_g.setOnClickListener(EventBtn(this, resources.getString(R.string.str_g)))
+        input_a.setOnClickListener(EventBtn(this, resources.getString(R.string.str_a)))
+        input_b.setOnClickListener(EventBtn(this, resources.getString(R.string.str_b)))
 
-        input_6.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_6)) }
-        input_7.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_7)) }
-        input_maj7.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_maj7)) }
-        input_harfdim.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_harfdim)) }
-        input_dim.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_dim)) }
-        input_dim_maj7.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_dim_maj7)) }
-        input_aug.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_aug)) }
-        input_aug_maj7.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_aug_maj7)) }
-        input_7sus4.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_7sus4)) }
+        input_6.setOnClickListener(EventBtn(this, resources.getString(R.string.str_6)))
+        input_7.setOnClickListener(EventBtn(this, resources.getString(R.string.str_7)))
+        input_maj7.setOnClickListener(EventBtn(this, resources.getString(R.string.str_maj7)))
+        input_harfdim.setOnClickListener(EventBtn(this, resources.getString(R.string.str_harfdim)))
+        input_dim.setOnClickListener(EventBtn(this, resources.getString(R.string.str_dim)))
+        input_dim_maj7.setOnClickListener(EventBtn(this, resources.getString(R.string.str_dim_maj7)))
+        input_aug.setOnClickListener(EventBtn(this, resources.getString(R.string.str_aug)))
+        input_aug_maj7.setOnClickListener(EventBtn(this, resources.getString(R.string.str_aug_maj7)))
+        input_7sus4.setOnClickListener(EventBtn(this, resources.getString(R.string.str_7sus4)))
 
-        input_flat5.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_flat5)) }
-        input_sharp5.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_sharp5)) }
-        input_flat9.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_flat9)) }
-        input_9.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_9)) }
-        input_sharp9.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_sharp9)) }
-        input_11.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_11)) }
-        input_sharp11.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_sharp11)) }
-        input_13.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_13)) }
-        input_flat13.setOnClickListener { Log.d(LOGTAG, resources.getString(R.string.str_flat13)) }
+        input_flat5.setOnClickListener(EventBtn(this, resources.getString(R.string.str_flat5)))
+        input_sharp5.setOnClickListener(EventBtn(this, resources.getString(R.string.str_sharp5)))
+        input_flat9.setOnClickListener(EventBtn(this, resources.getString(R.string.str_flat9)))
+        input_9.setOnClickListener(EventBtn(this, resources.getString(R.string.str_9)))
+        input_sharp9.setOnClickListener(EventBtn(this, resources.getString(R.string.str_sharp9)))
+        input_11.setOnClickListener(EventBtn(this, resources.getString(R.string.str_11)))
+        input_sharp11.setOnClickListener(EventBtn(this, resources.getString(R.string.str_sharp11)))
+        input_13.setOnClickListener(EventBtn(this, resources.getString(R.string.str_13)))
+        input_flat13.setOnClickListener(EventBtn(this, resources.getString(R.string.str_flat13)))
     }
+}
 
-    // テキストからBitmapを生成
-    fun createTextToBitmap(str : String): Bitmap {
-        val textView = TextView(this)
-        textView.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        textView.text = str
-        textView.typeface = Typeface.MONOSPACE
+class EventBtn(val activity: MainActivity, val name: String) : View.OnClickListener {
+    override fun onClick(v: View?) {
+        if (v == null) {
+            return
+        }
 
-        // TextViewにサイズを設定
-        textView.measure(
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED))
-        textView.layout(0, 0, textView.measuredWidth, textView.measuredHeight)
+        activity.lay_output.removeAllViews()
 
-        // Bitmapに変換
-        val bitmap = Bitmap.createBitmap(
-                textView.measuredWidth, textView.measuredHeight, Bitmap.Config.ARGB_8888 )
-        textView.draw(Canvas(bitmap))
+        // 選択状態更新
+            v.isSelected = v.isSelected.not()
+            if(v.isSelected) {
+                activity.mOutputStrList.add(name)
 
-        Log.d(LOGTAG, "textView.measuredWidth:" + textView.measuredWidth + ", textView.measuredHeight:" + textView.measuredHeight)
+                // 文字列連結
+                var outStr = ""
+                activity.mOutputStrList.forEach { outStr += it }
+                // コード名表示
+                activity.setOutputChord(outStr)
 
-        return bitmap
-    }
+                val imgTriad = CodeImageDB.getTriad(name)
+                val imgSharpFlat = CodeImageDB.getTriadSharpFlat(name)
 
-    fun getDisplayWidth(): Int {
-        return this.resources.displayMetrics.widthPixels
-    }
+            // 3和音画像生成
+            val viewTriad = ViewCreator.addCodeImageView(activity, imgTriad)
+            // #b画像生成
+            ViewCreator.addSharpFlatImageView(activity, imgSharpFlat, viewTriad.id)
 
-    fun getDisplayHeight(): Int {
-        return this.resources.displayMetrics.heightPixels
+            // アニメーション
+            startAnime(viewTriad, 400)
+        } else {
+            activity.mOutputStrList.remove(name)
+//            activity.lay_output.childCount
+//            activity.lay_output.removeViewAt(0)
+        }
     }
 }

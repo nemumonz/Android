@@ -7,9 +7,26 @@
     tools:context="jp.gr.java_conf.testa.kotlinbox.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_output_back"
         android:layout_width="0dp"
-        android:layout_height="198dp"
+        android:layout_height="138dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+    <!--android:src="@drawable/ic_code_score"-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -22,6 +39,23 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
+    <RelativeLayout
+        android:id="@+id/lay_output"
+        android:layout_width="0dp"
+        android:layout_height="138dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title">
+
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/txt_title"
         android:layout_width="368dp"
@@ -30,11 +64,21 @@
         android:gravity="center"
         android:text="@string/str_title"
         android:textAlignment="center"
-        android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:textColor="@android:color/darker_gray"
         android:typeface="monospace"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
+
+    <ImageButton
+        android:id="@+id/input_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_clear"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:layout_marginEnd="8dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -47,8 +91,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/img_output_back"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:id="@+id/scrollView2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +104,7 @@
             android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/img_output_back"
             tools:layout_editor_absoluteX="8dp">
 
             <LinearLayout
@@ -67,42 +114,41 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/input_reset"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_reset"
-                    android:typeface="monospace"
+                    android:id="@+id/input_c"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_c"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
-                    android:id="@+id/input_minor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_minor"
-                    android:typeface="monospace" />
+                    android:id="@+id/input_d"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_d" />
 
                 <Button
-                    android:id="@+id/input_sharp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_sharp"
-                    android:typeface="monospace" />
+                    android:id="@+id/input_e"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_e" />
 
                 <Button
-                    android:id="@+id/input_flat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_flat"
-                    android:typeface="monospace" />
+                    android:id="@+id/input_f"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_f" />
+
+                <Button
+                    android:id="@+id/input_g"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_g" />
+
+                <Button
+                    android:id="@+id/input_a"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_a" />
+
+                <Button
+                    android:id="@+id/input_b"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_b" />
             </LinearLayout>
 
             <LinearLayout
@@ -112,69 +158,19 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/input_c"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_c"
-                    android:typeface="monospace"
-                    tools:layout_editor_absoluteX="69dp"
-                    tools:layout_editor_absoluteY="342dp" />
+                    android:id="@+id/input_sharp"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_sharp" />
 
                 <Button
-                    android:id="@+id/input_d"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_d"
-                    android:typeface="monospace" />
+                    android:id="@+id/input_flat"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_flat" />
 
                 <Button
-                    android:id="@+id/input_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_e"
-                    android:typeface="monospace" />
-
-                <Button
-                    android:id="@+id/input_f"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_f"
-                    android:typeface="monospace" />
-
-                <Button
-                    android:id="@+id/input_g"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_g"
-                    android:typeface="monospace" />
-
-                <Button
-                    android:id="@+id/input_a"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_a"
-                    android:typeface="monospace" />
-
-                <Button
-                    android:id="@+id/input_b"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_b"
-                    android:typeface="monospace" />
+                    android:id="@+id/input_minor"
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_minor" />
             </LinearLayout>
 
             <LinearLayout
@@ -185,86 +181,50 @@
 
                 <Button
                     android:id="@+id/input_7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
+                    style="@style/AppTheme.Button"
                     android:text="@string/str_7"
-                    android:typeface="monospace"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
                     android:id="@+id/input_maj7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_maj7"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_maj7" />
 
                 <Button
                     android:id="@+id/input_6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_6"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_6" />
 
                 <Button
                     android:id="@+id/input_harfdim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_harfdim"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_harfdim" />
 
                 <Button
                     android:id="@+id/input_dim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_dim"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_dim" />
 
                 <Button
                     android:id="@+id/input_dim_maj7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="oM7"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="oM7" />
 
                 <Button
                     android:id="@+id/input_aug"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_aug"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_aug" />
 
                 <Button
                     android:id="@+id/input_aug_maj7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_aug_maj7"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_aug_maj7" />
 
                 <Button
                     android:id="@+id/input_7sus4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_7sus4"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_7sus4" />
             </LinearLayout>
 
             <LinearLayout
@@ -275,86 +235,50 @@
 
                 <Button
                     android:id="@+id/input_flat5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
+                    style="@style/AppTheme.Button"
                     android:text="@string/str_flat5"
-                    android:typeface="monospace"
                     tools:layout_editor_absoluteX="69dp"
                     tools:layout_editor_absoluteY="342dp" />
 
                 <Button
                     android:id="@+id/input_sharp5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_sharp5"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_sharp5" />
 
                 <Button
                     android:id="@+id/input_9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_9"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_9" />
 
                 <Button
                     android:id="@+id/input_flat9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_flat9"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_flat9" />
 
                 <Button
                     android:id="@+id/input_sharp9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_sharp9"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_sharp9" />
 
                 <Button
                     android:id="@+id/input_11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_11"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_11" />
 
                 <Button
                     android:id="@+id/input_sharp11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_sharp11"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_sharp11" />
 
                 <Button
                     android:id="@+id/input_13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_13"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_13" />
 
                 <Button
                     android:id="@+id/input_flat13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:soundEffectsEnabled="false"
-                    android:text="@string/str_flat13"
-                    android:typeface="monospace" />
+                    style="@style/AppTheme.Button"
+                    android:text="@string/str_flat13" />
             </LinearLayout>
 
         </LinearLayout>
