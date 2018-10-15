@@ -6,11 +6,16 @@ import android.graphics.*
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
 val LOGTAG = "MainActivity"
 
 class MainActivity : Activity() {
+    var mOutputStrList = mutableListOf<String>()
+
     /** 生成処理 */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,25 +24,22 @@ class MainActivity : Activity() {
         // リスナー登録
         setListener()
 
-        // 保存データ読み込み
-        SaveDataAccessor.registerSharedPreferences(this)
-        val outputChord = SaveDataAccessor.readOutputChord()
-        Log.d(LOGTAG, "outputChord:" + outputChord)
+        setOutputChord(mOutputStrList.toString())
 
-        setOutputChord(outputChord)
+        // 保存データアクセサ初期化
+        SaveDataAccessor.registerSharedPreferences(this)
     }
 
     fun setOutputChord(str: String) {
-        imageView.setImageBitmap(createTextToBitmap(this, str, Typeface.MONOSPACE))
+        imageView.setImageBitmap(createTextToBitmap(this, str, 16f, Typeface.MONOSPACE))
     }
 
     /** リスナー登録 */
     fun setListener() {
         input_reset.setOnClickListener {
-            Log.d(LOGTAG, resources.getString(R.string.str_reset))
-            val str = ""
-            SaveDataAccessor.writeOutputChord(str)
-            setOutputChord(str)
+            mOutputStrList.clear()
+            setOutputChord(mOutputStrList.toString())
+            lay_output.removeAllViews()
         }
         input_minor.setOnClickListener(EventBtn(this, "m"))
         input_sharp.setOnClickListener(EventBtn(this, resources.getString(R.string.str_sharp)))
@@ -75,16 +77,37 @@ class MainActivity : Activity() {
 
 class EventBtn(val activity: MainActivity, val name: String) : View.OnClickListener {
     override fun onClick(v: View?) {
-        v?.isSelected = v?.isSelected?.not() ?: false
+        if (v == null) {
+            return
+        }
 
-        val str = SaveDataAccessor.readOutputChord() + name
-        SaveDataAccessor.writeOutputChord(str)
-        setOutputChord(str)
-        startAnime(activity.imageView, 400)
+        activity.lay_output.removeAllViews()
+
+        // 選択状態更新
+            v.isSelected = v.isSelected.not()
+            if(v.isSelected) {
+                activity.mOutputStrList.add(name)
+
+                // 文字列連結
+                var outStr = ""
+                activity.mOutputStrList.forEach { outStr += it }
+                // コード名表示
+                activity.setOutputChord(outStr)
+
+                val imgTriad = CodeImageDB.getTriad(name)
+                val imgSharpFlat = CodeImageDB.getTriadSharpFlat(name)
+
+            // 3和音画像生成
+            val viewTriad = ViewCreator.addCodeImageView(activity, imgTriad)
+            // #b画像生成
+            ViewCreator.addSharpFlatImageView(activity, imgSharpFlat, viewTriad.id)
+
+            // アニメーション
+            startAnime(viewTriad, 400)
+        } else {
+            activity.mOutputStrList.remove(name)
+//            activity.lay_output.childCount
+//            activity.lay_output.removeViewAt(0)
+        }
     }
-
-    fun setOutputChord(str: String) {
-        activity.imageView.setImageBitmap(createTextToBitmap(activity, str, Typeface.MONOSPACE))
-    }
-
 }

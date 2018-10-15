@@ -21,7 +21,7 @@ import android.widget.TextView
 /**
  * 文字列からBitmapを生成
  */
-fun createTextToBitmap(context: Context, str: String, typeface: Typeface): Bitmap? {
+fun createTextToBitmap(context: Context, str: String, size: Float, typeface: Typeface): Bitmap? {
     if(str == "") {
         return null
     }
@@ -30,6 +30,7 @@ fun createTextToBitmap(context: Context, str: String, typeface: Typeface): Bitma
     textView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
     textView.text = str
+    textView.textSize = size
     textView.typeface = typeface
 
     // TextViewにサイズを設定
